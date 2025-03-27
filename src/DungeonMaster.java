@@ -11,6 +11,7 @@ import java.util.List;
 public class DungeonMaster implements Runnable {
     private int timeToClear;
     private List<DungeonStatus> dungeonStatuses;
+    private Integer dungeonClearers;
 
     // Constructor
     public DungeonMaster(int timeToClear, List<DungeonStatus> dungeonStatuses) {
@@ -41,6 +42,14 @@ public class DungeonMaster implements Runnable {
                     // Dungeon cleared after timeToClear seconds
                     dungeonStatus.setStatus(false);
                     dungeonCleared = true;
+
+                    // First dungeon clearer
+                    if (dungeonClearers == null) {
+                        dungeonClearers = 0;
+                        incDungeonClearers(dungeonClearers);
+                    }
+
+                    incDungeonClearers(dungeonClearers);
                     break;
 
                 }
@@ -55,5 +64,15 @@ public class DungeonMaster implements Runnable {
                 }
             }
         }
+    }
+
+    // Getter
+    public int getDungeonClearers() {
+        return dungeonClearers;
+    }
+
+    // Setter
+    public void incDungeonClearers(int dungeonClearers) {
+        this.dungeonClearers = dungeonClearers + 1;
     }
 }

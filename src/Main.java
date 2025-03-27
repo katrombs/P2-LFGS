@@ -69,8 +69,9 @@ public class Main {
             // DUNGEON DISPLAY : DungeonDisplay //
 
             // TEST display //
-            // DungeonDisplay myDisplay = new DungeonDisplay(1, "Empty", 3,15, 2,3,2);
-            // myDisplay.displayDungeon();
+            //DungeonDisplay testDisplay = new DungeonDisplay(1, false, 3,15, 2,3,2);
+            //testDisplay.displayDungeon();
+            //testDisplay.leftoverPlayers();
             // TEST display END //
 
             // DUNGEON DISPLAY END //
@@ -79,6 +80,8 @@ public class Main {
 
         // Shut down dungeon pool when party cannot be completed
         dungeonPool.shutdown();
+
+
 
         // DUNGEON ASSIGNMENT END //
     }
