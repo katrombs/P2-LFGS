@@ -11,11 +11,15 @@ import java.util.List;
 public class DungeonMaster implements Runnable {
     private int timeToClear;
     private List<DungeonStatus> dungeonStatuses;
+    private DungeonDisplay dungeonDisplay;
+    private int partyCount;
 
     // Constructor
-    public DungeonMaster(int timeToClear, List<DungeonStatus> dungeonStatuses) {
+    public DungeonMaster(int timeToClear, List<DungeonStatus> dungeonStatuses, DungeonDisplay dungeonDisplay, int partyCount) {
         this.timeToClear = timeToClear;
         this.dungeonStatuses = dungeonStatuses;
+        this.dungeonDisplay = dungeonDisplay;
+        this.partyCount = partyCount;
     }
 
     @Override
@@ -30,9 +34,9 @@ public class DungeonMaster implements Runnable {
                 // If dungeon is Empty, set to Active
                 if(!dungeonStatus.getStatus()) {
                     dungeonStatus.setStatus(true); // Set active
-                    System.out.println("\n=============================================");
-                    System.out.println("   Dungeon " + i + " is currently active.");
-                    System.out.println("=============================================\n");
+                    //System.out.println("\n=============================================");
+                    //System.out.println("   Dungeon " + i + " is currently active.");
+                    //System.out.println("=============================================\n");
 
                     try {
                         Thread.sleep(timeToClear * 1000L);
@@ -45,13 +49,15 @@ public class DungeonMaster implements Runnable {
                     dungeonCleared = true;
 
                     // Increment dungeon clearers
-                    System.out.println("\n=============================================");
+                    //System.out.println("\n=============================================");
                     dungeonStatus.incTotalParty();
-                    System.out.println("  Dungeon " + i + " clearer count: " + dungeonStatus.getTotalParty());
+                    //System.out.println("  Dungeon " + i + " clearer count: " + dungeonStatus.getTotalParty());
                     dungeonStatus.incTotalTime(timeToClear);
-                    System.out.println("  Dungeon " + i + " time count: " + dungeonStatus.getTotalTime());
-                    System.out.println("  Dungeon " + i + " is now empty!");
-                    System.out.println("=============================================\n");
+                    //System.out.println("  Dungeon " + i + " time count: " + dungeonStatus.getTotalTime());
+                    //System.out.println("  Dungeon " + i + " is now empty!");
+                    //System.out.println("=============================================\n");
+                    System.out.println("Total number of parties created: " + partyCount);
+                    dungeonDisplay.displayDungeon();
                     break;
 
                 }

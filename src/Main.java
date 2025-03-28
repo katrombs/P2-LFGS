@@ -103,7 +103,7 @@ public class Main {
         // Submit dungeon runs to dungeonPool for as many as there are parties created
         for (int i = 0; i < partyCounter; i++) {
             // DungeonMaster instance
-            DungeonMaster dungeonMaster = new DungeonMaster(rand.nextInt((t2 - t1) + 1) + t1, dungeonStatuses);
+            DungeonMaster dungeonMaster = new DungeonMaster(rand.nextInt((t2 - t1) + 1) + t1, dungeonStatuses, dungeonDisplay, partyCounter);
             dungeonPool.submit(dungeonMaster);
 
             //dungeonDisplay.displayDungeon();
