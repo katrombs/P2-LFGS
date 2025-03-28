@@ -12,14 +12,12 @@ public class DungeonMaster implements Runnable {
     private int timeToClear;
     private List<DungeonStatus> dungeonStatuses;
     private DungeonDisplay dungeonDisplay;
-    private int partyCount;
 
     // Constructor
-    public DungeonMaster(int timeToClear, List<DungeonStatus> dungeonStatuses, DungeonDisplay dungeonDisplay, int partyCount) {
+    public DungeonMaster(int timeToClear, List<DungeonStatus> dungeonStatuses, DungeonDisplay dungeonDisplay) {
         this.timeToClear = timeToClear;
         this.dungeonStatuses = dungeonStatuses;
         this.dungeonDisplay = dungeonDisplay;
-        this.partyCount = partyCount;
     }
 
     @Override
@@ -56,7 +54,7 @@ public class DungeonMaster implements Runnable {
                     //System.out.println("  Dungeon " + i + " time count: " + dungeonStatus.getTotalTime());
                     //System.out.println("  Dungeon " + i + " is now empty!");
                     //System.out.println("=============================================\n");
-                    System.out.println("Total number of parties created: " + partyCount);
+                    //System.out.println("Total number of parties created: " + partyCount);
                     dungeonDisplay.displayDungeon();
                     break;
 
