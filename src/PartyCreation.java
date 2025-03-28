@@ -12,20 +12,11 @@ public class PartyCreation {
 
     // Completed Party : Getter
     public boolean partyCompleted() {
-        // CHECK VALUES
-        System.out.println("Tank count: " + partyTank);
-        System.out.println("Healer count: " + partyHealer);
-        System.out.println("DPS count: " + partyDps);
 
         boolean partyCompleted = true;
         if (partyDps < 3 || partyHealer < 1 || partyTank < 1) {
             partyCompleted = false;
         }
-
-        // Update counts of each role
-        updatePartyTank();
-        updatePartyHealer();
-        updatePartyDps();
 
         return partyCompleted;
     }

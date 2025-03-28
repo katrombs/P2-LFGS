@@ -11,7 +11,6 @@ import java.util.List;
 public class DungeonMaster implements Runnable {
     private int timeToClear;
     private List<DungeonStatus> dungeonStatuses;
-    private Integer dungeonClearers;
 
     // Constructor
     public DungeonMaster(int timeToClear, List<DungeonStatus> dungeonStatuses) {
@@ -31,7 +30,9 @@ public class DungeonMaster implements Runnable {
                 // If dungeon is Empty, set to Active
                 if(!dungeonStatus.getStatus()) {
                     dungeonStatus.setStatus(true); // Set active
-                    System.out.println("Dungeon " + i + " is currently active.");
+                    System.out.println("\n=============================================");
+                    System.out.println("   Dungeon " + i + " is currently active.");
+                    System.out.println("=============================================\n");
 
                     try {
                         Thread.sleep(timeToClear * 1000L);
@@ -43,13 +44,14 @@ public class DungeonMaster implements Runnable {
                     dungeonStatus.setStatus(false);
                     dungeonCleared = true;
 
-                    // First dungeon clearer
-                    if (dungeonClearers == null) {
-                        dungeonClearers = 0;
-                        incDungeonClearers(dungeonClearers);
-                    }
-
-                    incDungeonClearers(dungeonClearers);
+                    // Increment dungeon clearers
+                    System.out.println("\n=============================================");
+                    dungeonStatus.incTotalParty();
+                    System.out.println("  Dungeon " + i + " clearer count: " + dungeonStatus.getTotalParty());
+                    dungeonStatus.incTotalTime(timeToClear);
+                    System.out.println("  Dungeon " + i + " time count: " + dungeonStatus.getTotalTime());
+                    System.out.println("  Dungeon " + i + " is now empty!");
+                    System.out.println("=============================================\n");
                     break;
 
                 }
@@ -64,15 +66,5 @@ public class DungeonMaster implements Runnable {
                 }
             }
         }
-    }
-
-    // Getter
-    public int getDungeonClearers() {
-        return dungeonClearers;
-    }
-
-    // Setter
-    public void incDungeonClearers(int dungeonClearers) {
-        this.dungeonClearers = dungeonClearers + 1;
     }
 }
